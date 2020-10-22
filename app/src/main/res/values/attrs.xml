@@ -15,4 +15,28 @@
     </declare-styleable>
 
 
+    <declare-styleable name="CardLayout">
+        <attr name="child_width" format="dimension" />
+        <attr name="child_height" format="dimension" />
+        <attr name="child_cornerRadius" format="dimension" />
+        <attr name="child_rebound" format="dimension" />
+        <attr name="child_disappear" format="dimension" />
+        <attr name="child_margin" format="dimension" />
+        <attr name="child_scaling_base" format="float" />
+        <attr name="child_show_count" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="corner_lt_radius" format="dimension" />
+        <attr name="corner_lb_radius" format="dimension" />
+        <attr name="corner_rt_radius" format="dimension" />
+        <attr name="corner_rb_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="mutate_background" format="boolean" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
 </resources>

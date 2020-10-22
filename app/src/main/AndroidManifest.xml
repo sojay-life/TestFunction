@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFunction">
-        <activity android:name=".loading.LoadingActivity"></activity>
+        <activity android:name=".card.CardActivity"></activity>
+        <activity android:name=".loading.LoadingActivity" />
         <activity android:name=".puzzle.PuzzleActivity" />
         <activity android:name=".code.CodeActivity" />
         <activity android:name=".MainActivity">

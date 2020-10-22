@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".card.CardActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ViewPager实现"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="死读书好地方股东会速发货过度好地方哭hiU盾四个ID发给和股份的回购回复第更好ID复合弓号对方考虑结果看了绝对是个快乐觉得更何况绝地反击欧股份对公结算发动机盖号of冬季施工求偶的好的规划度数孤鸿寡鹄"
+            android:layout_marginRight="125dp"
+            android:background="#ccc"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="自定义View实现"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="死读书好地方股东会速发货过度好地方哭hiU盾四个ID发给和股份的回购回复第更好ID复合弓号对方考虑结果看了绝对是个快乐觉得更何况绝地反击欧股份对公结算发动机盖号of冬季施工求偶的好的规划度数孤鸿寡鹄"
+            android:layout_marginRight="140dp" />
+
+        <com.sojay.testfunction.card.card2.CardLayout
+            android:id="@+id/card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#5ACCCCCC"/>
+
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="RecyclerView实现"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="死读书好地方股东会速发货过度好地方哭hiU盾四个ID发给和股份的回购回复第更好ID复合弓号对方考虑结果看了绝对是个快乐觉得更何况绝地反击欧股份对公结算发动机盖号of冬季施工求偶的好的规划度数孤鸿寡鹄"
+            android:layout_marginRight="140dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:overScrollMode="never"
+            android:layout_gravity="right"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>
