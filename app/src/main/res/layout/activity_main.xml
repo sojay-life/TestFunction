@@ -26,6 +26,15 @@
         android:layout_marginTop="20dp"
         android:text="拼图" />
 
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#ccc"
+        android:layout_marginTop="20dp"
+        android:text="loading" />
+
 
 
 </LinearLayout>

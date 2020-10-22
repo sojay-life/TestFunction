@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".loading.LoadingActivity">
+
+
+    <com.sojay.testfunction.loading.MusicLoadingView
+        android:id="@+id/music_loading"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        app:loading_bg_color="@color/teal_200"
+        app:loading_min_width="10dp"
+        app:loading_update_width="10dp"
+        app:loading_update_time="10"
+        app:loading_direction="center_to_both_sides"/>
+
+    <TextView
+        android:id="@+id/start_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="开始loading"
+        android:background="@color/gray"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/stop_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="结束loading"
+        android:background="@color/gray"
+        android:padding="10dp"/>
+
+</LinearLayout>
