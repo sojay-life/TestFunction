@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,5 +16,16 @@
         android:background="#ccc"
         android:layout_marginTop="20dp"
         android:text="随机生成图片验证码" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#ccc"
+        android:layout_marginTop="20dp"
+        android:text="拼图" />
+
+
 
 </LinearLayout>
