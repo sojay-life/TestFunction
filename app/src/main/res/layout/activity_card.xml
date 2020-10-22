@@ -19,6 +19,7 @@
         android:layout_marginRight="15dp">
 
         <TextView
+            android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="死读书好地方股东会速发货过度好地方哭hiU盾四个ID发给和股份的回购回复第更好ID复合弓号对方考虑结果看了绝对是个快乐觉得更何况绝地反击欧股份对公结算发动机盖号of冬季施工求偶的好的规划度数孤鸿寡鹄"

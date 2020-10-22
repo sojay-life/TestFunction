@@ -31,6 +31,7 @@ public class CardActivity extends AppCompatActivity {
 
     private ViewPager mVP;
     private CardLayout mCardLayout;
+    private TextView tv1;
     private TextView tv2;
     private TextView tv3;
     private RecyclerView mRv;
@@ -69,6 +70,7 @@ public class CardActivity extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, String on) {
                 datas.add(on);
                 //当前显示的  datas.get(0)
+                tv3.setText(datas.get(0));
 
             }
 
@@ -129,13 +131,33 @@ public class CardActivity extends AppCompatActivity {
         CardTransformer mCardPageTransformer = new CardTransformer();
         mVP.setPageTransformer(true, mCardPageTransformer);
         mVP.setOffscreenPageLimit(100);
+        mVP.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                String s = list.get(position % list.size());
+                tv1.setText(s.substring(s.length() - 15));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
     private void initView() {
+        tv1 = findViewById(R.id.tv1);
         mVP = findViewById(R.id.vp);
-        mCardLayout = findViewById(R.id.card_layout);
+
         tv2 = findViewById(R.id.tv2);
+        mCardLayout = findViewById(R.id.card_layout);
+
         tv3 = findViewById(R.id.tv3);
         mRv = findViewById(R.id.rv);
     }
