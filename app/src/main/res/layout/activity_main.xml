@@ -44,6 +44,15 @@
         android:layout_marginTop="20dp"
         android:text="卡片" />
 
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#ccc"
+        android:layout_marginTop="20dp"
+        android:text="光线感应" />
+
 
 
 </LinearLayout>
