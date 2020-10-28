@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcus xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--  静态注册时使用  -->
+    <!--  shortcutId：一个唯一的id  -->
+    <!--  enabled,：表示这个shortcut是否可用  -->
+    <!--  shortcutShortLabel：这里是配置的短名称, 下面还会有长名称, 如果长名称显示不下, 就显示短名称  -->
+    <!--  shortcutLongLabel：这里是配置的长名称, launcher会优先选择长名称显示  -->
+    <!--  shortcutDisabledMessage：这个配置是在我们选择一个不可用的shortcut时给用户的一个提示  -->
+
+    <!--  targetPackage：指定一个目标应用的包名  -->
+    <!--  targetClass：我们要跳转的目标类  -->
+    <!--  android:action：一定要配置, 否则会崩溃  -->
+    <!--  categories：这个东西目前位置官方只给提供了android.shortcut.conversation  -->
+
+    <shortcut
+        android:shortcutId="puzzle"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:shortcutShortLabel="@string/puzzle_short_name"
+        android:shortcutLongLabel="@string/puzzle_long_name"
+        android:shortcutDisabledMessage="@string/disable_msg">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.sojay.testfunction"
+            android:targetClass="com.sojay.testfunction.puzzle.PuzzleActivity" />
+        <categories android:name="android.shortcut.conversation"/>
+    </shortcut>
+
+</shortcus>

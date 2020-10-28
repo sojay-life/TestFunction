@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TestFunction</string>
+
+
+    <string name="disable_msg">不可点的提示信息</string>
+
+    <string name="puzzle_short_name">拼图</string>
+    <string name="puzzle_long_name">点击这个地方可以直接打开拼图</string>
+
+    <string name="card_short_name">卡片</string>
+    <string name="card_long_name">打开卡片</string>
+
+
 </resources>

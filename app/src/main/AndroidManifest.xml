@@ -20,9 +20,14 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- 静态配置 shortcuts -->
+            <!-- 能配置shortcuts的activity必须要有 action是android.intent.action.MAIN 和 category是android.intent.category.LAUNCHER -->
+<!--            <meta-data-->
+<!--                android:name="android.app.shortcuts"-->
+<!--                android:resource="@xml/test_shortcuts"/>-->
         </activity>
     </application>
 
