@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,22 +16,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFunction">
-        <activity android:name=".gxgy.GuangXianActivity"></activity>
+
+        <activity android:name=".wps.WPSActivity"
+            android:screenOrientation="landscape"/>
+
+        <activity android:name=".random.RandomActivity" />
+
+        <activity android:name=".gxgy.GuangXianActivity" />
+
         <activity android:name=".card.CardActivity" />
+
         <activity android:name=".loading.LoadingActivity" />
+
         <activity android:name=".puzzle.PuzzleActivity" />
+
         <activity android:name=".code.CodeActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <!-- 静态配置 shortcuts -->
             <!-- 能配置shortcuts的activity必须要有 action是android.intent.action.MAIN 和 category是android.intent.category.LAUNCHER -->
-<!--            <meta-data-->
-<!--                android:name="android.app.shortcuts"-->
-<!--                android:resource="@xml/test_shortcuts"/>-->
+            <!-- <meta-data -->
+            <!-- android:name="android.app.shortcuts" -->
+            <!-- android:resource="@xml/test_shortcuts"/> -->
         </activity>
     </application>
 

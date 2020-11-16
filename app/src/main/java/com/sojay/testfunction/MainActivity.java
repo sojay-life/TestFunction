@@ -15,6 +15,8 @@ import com.sojay.testfunction.code.CodeActivity;
 import com.sojay.testfunction.gxgy.GuangXianActivity;
 import com.sojay.testfunction.loading.LoadingActivity;
 import com.sojay.testfunction.puzzle.PuzzleActivity;
+import com.sojay.testfunction.random.RandomActivity;
+import com.sojay.testfunction.wps.WPSActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv4).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CardActivity.class)));
 
         findViewById(R.id.tv5).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GuangXianActivity.class)));
+
+        findViewById(R.id.tv6).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RandomActivity.class)));
+
+        findViewById(R.id.tv7).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, WPSActivity.class)));
 
         initShortcutData();
 

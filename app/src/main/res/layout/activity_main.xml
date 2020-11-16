@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv1"
@@ -52,6 +51,24 @@
         android:background="#ccc"
         android:layout_marginTop="20dp"
         android:text="光线感应" />
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#ccc"
+        android:layout_marginTop="20dp"
+        android:text="测试响应随机方法" />
+
+    <TextView
+        android:id="@+id/tv7"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#ccc"
+        android:layout_marginTop="20dp"
+        android:text="测试h5的播放wps" />
 
 
 
