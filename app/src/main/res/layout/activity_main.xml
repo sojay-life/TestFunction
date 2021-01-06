@@ -7,68 +7,110 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="随机生成图片验证码" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="拼图" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="loading" />
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="随机生成图片验证码" />
 
-    <TextView
-        android:id="@+id/tv4"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="卡片" />
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="拼图" />
 
-    <TextView
-        android:id="@+id/tv5"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="光线感应" />
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="loading" />
 
-    <TextView
-        android:id="@+id/tv6"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="测试响应随机方法" />
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="卡片" />
 
-    <TextView
-        android:id="@+id/tv7"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#ccc"
-        android:layout_marginTop="20dp"
-        android:text="测试h5的播放wps" />
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="光线感应" />
+
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="测试响应随机方法" />
+
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="测试h5的播放wps" />
+
+            <TextView
+                android:id="@+id/tv8"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="测试h5 + 画板" />
+
+            <TextView
+                android:id="@+id/tv9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="测试图片坐标缩放" />
+
+            <TextView
+                android:id="@+id/tv10"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="翻页" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 
 
 

@@ -13,20 +13,26 @@ import java.util.List;
 import java.util.Map;
 
 import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
 
 public class SignatureUtil {
 
-    public static String getUrlParam(Map<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder builder = new StringBuilder();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            if (builder.length() > 0) {
-                builder.append('&');
+    public static String getUrlParam(Map<String, String> params) {
+        List<String> keys = new ArrayList<String>(){
+            {
+                for (Map.Entry<String, String> entry : params.entrySet()) {
+                    add(entry.getKey());
+                }
             }
-//            builder.append(URLEncoder.encode(entry.getKey(), "utf-8")).append('=').append(URLEncoder.encode(entry.getValue(), "utf-8"));
-            builder.append(entry.getKey()).append('=').append(entry.getValue());
+        };
+        StringBuilder sb = new StringBuilder();
+        for (String key : keys) {
+            String value = params.get(key) + "&";
+            sb.append(key).append("=").append(value);
         }
-        return  builder.toString();
+        return sb.toString();
     }
 
     public static String getSignature(Map<String, String> params, String appSecret) {
@@ -48,29 +54,37 @@ public class SignatureUtil {
             if (key=="_w_signature"){
                 continue;
             }
-            contents.append(key+"=").append(params.get(key));
+            contents.append(key).append("=").append(params.get(key));
             System.out.println("key:"+key+",value:"+params.get(key));
         }
         contents.append("_w_secretkey=").append(appSecret);
 
         // 进行hmac sha1 签名
         byte[] bytes= hmacSha1(appSecret.getBytes(),contents.toString().getBytes());
+
         //字符串经过Base64编码
         String sign = Base64.encodeToString(bytes, Base64.DEFAULT);
-        try {
-            sign = URLEncoder.encode( sign, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        System.out.println(sign);
+        System.out.println("###########   base64 = " + sign);
+
+//        try {
+//            sign = URLEncoder.encode(sign, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+
         return sign;
+
     }
 
     public static byte[] hmacSha1(byte[] key, byte[] data) {
         try {
-            SecretKeySpec signingKey = new SecretKeySpec(key, "HmacSHA1");
-            Mac mac = Mac.getInstance(signingKey.getAlgorithm());
-            mac.init(signingKey);
+            //根据给定的字节数组构造一个密钥,第二参数指定一个密钥算法的名称
+            SecretKey secretKey = new SecretKeySpec(key, "HmacSHA1");
+            //生成一个指定 Mac 算法 的 Mac 对象
+            Mac mac = Mac.getInstance("HmacSHA1");
+            //用给定密钥初始化 Mac 对象
+            mac.init(secretKey);
+            //完成 Mac 操作
             return mac.doFinal(data);
         }
         catch (NoSuchAlgorithmException e) {

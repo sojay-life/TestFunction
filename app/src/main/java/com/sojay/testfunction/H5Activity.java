@@ -1,35 +1,47 @@
-package com.sojay.testfunction.wps;
+package com.sojay.testfunction;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.sojay.testfunction.R;
 import com.sojay.testfunction.utils.SignatureUtil;
+import com.sojay.testfunction.view.PaintView;
+import com.sojay.testfunction.view.PathMeasureView;
 import com.ycbjie.webviewlib.inter.InterWebListener;
 import com.ycbjie.webviewlib.utils.X5WebUtils;
 import com.ycbjie.webviewlib.widget.WebProgress;
 import com.ycbjie.webviewlib.wv.X5WvWebView;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WPSActivity extends AppCompatActivity {
+public class H5Activity extends AppCompatActivity {
 
     private X5WvWebView mWebView;
     private WebProgress progress;
+    private PaintView mPaintView;
+    private PathMeasureView path_measure_view;
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private TextView tv4;
+    private TextView tv5;
+    private TextView tv6;
+
+    private boolean isPaintEnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_w_p_s);
+        setContentView(R.layout.activity_h5);
 
         initView();
 
@@ -38,48 +50,45 @@ public class WPSActivity extends AppCompatActivity {
     public void initView() {
         mWebView = findViewById(R.id.web_view1);
         progress = findViewById(R.id.progress);
+        mPaintView = findViewById(R.id.paint_view);
+        path_measure_view = findViewById(R.id.path_measure_view);
+        tv1 = findViewById(R.id.tv_1);
+        tv2 = findViewById(R.id.tv_2);
+        tv3 = findViewById(R.id.tv_3);
+        tv4 = findViewById(R.id.tv_4);
+        tv5 = findViewById(R.id.tv_5);
+        tv6 = findViewById(R.id.tv_6);
+
         progress.show();
         progress.setColor(this.getResources().getColor(R.color.purple_500));
         mWebView.getX5WebChromeClient().setWebListener(interWebListener);
         mWebView.getX5WebViewClient().setWebListener(interWebListener);
 
-        String u = getIntent().getStringExtra("url");
+//        String url = "http://lrs.cheerup-edu.cn/wps/index.html";
+//        String url = "https://appnew.cheerup-edu.cn/wx/ppt2.html";
+//        String url = "https://appnew.cheerup-edu.cn/zbdlw/index.html";
+        String url = "https://m.cheerup-edu.cn/kejian/kejian.html?course_id=6&isfx=2";
+        mWebView.loadUrl(url);
 
-        if (u == null || TextUtils.isEmpty(u)) {
+        mPaintView.setCanEdit(false);
 
-            // wps 是以H5的形式呈现的
-            // 管理平台中配置回调地址  https://xx.com/xx
-            // wps回调地址：v1/3rd/file/info 以参数形式配置路由
-            // 后台返回数据
+        tv1.setOnClickListener(v -> mPaintView.setPaintColor(R.color.black));
 
-            // 因为移动端使用webview加载，所以签名不需要 URLEncoder.encode
+        tv2.setOnClickListener(v -> mPaintView.setPaintColor(R.color.purple1));
 
-           Map<String, String> map = new HashMap<>();
-            map.put("_w_appid", "7c5157d432754e119561730963937e9f");
-//        map.put("_w_fname", "https://qiyuanwxxcx.oss-cn-beijing.aliyuncs.com/videos/test.pptx");
-            map.put("_w_fname", "aaaaa");
-//            map.put("_w_mode", "simple");
-//            map.put("_w_hidecmb", "1");
+        tv3.setOnClickListener(v -> mPaintView.setXfermode());
 
-            String signature = SignatureUtil.getSignature(map, "b746d66fa7934450a01c2c1b52a65329");
+        tv4.setOnClickListener(v -> mPaintView.clearAll());
 
-            String urlParam = SignatureUtil.getUrlParam(map);
+        tv5.setOnClickListener(v -> {
+            isPaintEnable = !isPaintEnable;
+            mPaintView.setCanEdit(isPaintEnable);
+        });
 
-            System.out.println("##################    signature = " + signature + "  --  " + urlParam);
-
-            String url = "https://wwo.wps.cn/office/p/a?" +
-                    urlParam +
-                    "_w_signature=" + signature;
-
-            System.out.println("##########   url  = " + url);
-
-            mWebView.loadUrl(url);
-
-        } else {
-            mWebView.loadUrl(u);
-        }
-
-
+        tv6.setOnClickListener(v -> {
+            path_measure_view.setPath(Constant.path);
+            path_measure_view.startMove();
+        });
     }
 
     private InterWebListener interWebListener = new InterWebListener() {
@@ -122,8 +131,38 @@ public class WPSActivity extends AppCompatActivity {
         }
     };
 
+
+    /**
+     * 上一步，这里通知h5切换到上一步
+     */
+    public void previous() {
+//        paintView.clearAll();
+        mWebView.loadUrl("javascript:get_android_base('up')");
+    }
+
+    /**
+     * 下一步，这里设置h5切换到下一步
+     */
+    public void nextStep() {
+//        paintView.clearAll();
+        mWebView.loadUrl("javascript:get_android_base('down')");
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        Toast.makeText(this, "code = " + keyCode, Toast.LENGTH_SHORT).show();
+
+        if (event.getKeyCode() == KeyEvent.KEYCODE_PAGE_UP) {
+            previous();
+            return true;
+        }
+
+        if (event.getKeyCode() == KeyEvent.KEYCODE_PAGE_DOWN) {
+            nextStep();
+            return true;
+        }
+
         if (mWebView.canGoBack() && event.getKeyCode() ==
                 KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             mWebView.goBack();

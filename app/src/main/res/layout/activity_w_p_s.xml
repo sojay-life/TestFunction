@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/web_group"
+    <com.ycbjie.webviewlib.wv.X5WvWebView
+        android:id="@+id/web_view1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <com.ycbjie.webviewlib.widget.WebProgress
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
 
 </FrameLayout>

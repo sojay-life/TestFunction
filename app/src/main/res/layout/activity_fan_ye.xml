@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fanye.FanYeActivity"
+    android:orientation="vertical">
+
+    <com.sojay.testfunction.fanye.MyClockView
+        android:id="@+id/clockView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dayTextBackground="@drawable/time_bg"
+        app:dayTextColor="#ffffff"
+        app:hourTextBackground="@drawable/time_bg"
+        app:hourTextColor="#ffffff"
+        app:minTextBackground="@drawable/time_bg"
+        app:minTextColor="#ffffff"
+        app:secTextBackground="@drawable/time_bg"
+        android:visibility="gone"
+        app:secTextColor="#ffffff" >
+    </com.sojay.testfunction.fanye.MyClockView>
+
+    <com.sojay.testfunction.fanye.sojay.TurnPageView
+        android:id="@+id/turn_page_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="倒计时" />
+
+</FrameLayout>

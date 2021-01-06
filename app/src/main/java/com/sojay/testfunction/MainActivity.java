@@ -2,20 +2,28 @@ package com.sojay.testfunction;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Toast;
 
 import com.sojay.testfunction.card.CardActivity;
 import com.sojay.testfunction.code.CodeActivity;
+import com.sojay.testfunction.fanye.FanYeActivity;
 import com.sojay.testfunction.gxgy.GuangXianActivity;
 import com.sojay.testfunction.loading.LoadingActivity;
 import com.sojay.testfunction.puzzle.PuzzleActivity;
 import com.sojay.testfunction.random.RandomActivity;
+import com.sojay.testfunction.usb.UsbActivity;
 import com.sojay.testfunction.wps.WPSActivity;
 
 import java.util.ArrayList;
@@ -24,6 +32,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private List<ShortcutBean> shortcutBeanList;
+    private static String[] mPermissionList = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private static int REQUEST_PERMISSION_CODE = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +55,36 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.tv7).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, WPSActivity.class)));
 
+        findViewById(R.id.tv8).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, H5Activity.class));
+
+//            Intent intent = new Intent(MainActivity.this, WPSActivity.class);
+//            intent.putExtra("url", "http://lrs.cheerup-edu.cn/wps/index.html");
+//            startActivity(intent);
+        });
+
+        findViewById(R.id.tv9).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, UsbActivity.class)));
+
+        findViewById(R.id.tv10).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, FanYeActivity.class)));
+
         initShortcutData();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
             dynamicShortcuts();
 
+        requestPermissions();
+
+    }
+
+    /**
+     * 获取文件权限
+     */
+    public void requestPermissions() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, mPermissionList, REQUEST_PERMISSION_CODE);
+            }
+        }
     }
 
     /**
@@ -122,6 +158,14 @@ public class MainActivity extends AppCompatActivity {
 //
 //        shortcutManager.updateShortcuts(Arrays.asList(info));
 
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Toast.makeText(this, "code = " + keyCode, Toast.LENGTH_SHORT).show();
+
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
