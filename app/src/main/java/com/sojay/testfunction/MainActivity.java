@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -24,6 +27,9 @@ import com.sojay.testfunction.loading.LoadingActivity;
 import com.sojay.testfunction.puzzle.PuzzleActivity;
 import com.sojay.testfunction.random.RandomActivity;
 import com.sojay.testfunction.usb.UsbActivity;
+import com.sojay.testfunction.utils.BitmapUtil;
+import com.sojay.testfunction.utils.FileUtil;
+import com.sojay.testfunction.video.TurnVideoPlayerActivity;
 import com.sojay.testfunction.wps.WPSActivity;
 
 import java.util.ArrayList;
@@ -67,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.tv10).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, FanYeActivity.class)));
 
+        findViewById(R.id.tv11).setOnClickListener(v -> cropBitmap());
+
         initShortcutData();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
@@ -74,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         requestPermissions();
 
+        FileUtil.createFileDir(Environment.getExternalStorageDirectory() + "/test/");
     }
 
     /**
@@ -177,6 +186,21 @@ public class MainActivity extends AppCompatActivity {
 
         shortcutBeanList.add(new ShortcutBean(PuzzleActivity.class, "puzzle", R.mipmap.ic_launcher_round, getString(R.string.puzzle_short_name), getString(R.string.puzzle_long_name)));
         shortcutBeanList.add(new ShortcutBean(CardActivity.class, "card", R.mipmap.ic_launcher_round, getString(R.string.card_short_name), getString(R.string.card_long_name)));
+
+    }
+
+    private void cropBitmap() {
+        Bitmap bitmap = BitmapUtil.getLocalBitmap(Environment.getExternalStorageDirectory() + "/test/aaa.png");
+
+        Bitmap cropBitmap1 = Bitmap.createBitmap(bitmap, 0, 0, 1920, 1080, null, false);
+        Bitmap cropBitmap2 = Bitmap.createBitmap(bitmap, bitmap.getWidth() - 1920, 0, 1920, 1080, null, false);
+        Bitmap cropBitmap3 = Bitmap.createBitmap(bitmap, 1920, 0, bitmap.getWidth() - 1920, 1080, null, false);
+
+        BitmapUtil.saveBitmap(Environment.getExternalStorageDirectory() + "/test/left_1920.png", cropBitmap1);
+        BitmapUtil.saveBitmap(Environment.getExternalStorageDirectory() + "/test/right_1920.png", cropBitmap2);
+        BitmapUtil.saveBitmap(Environment.getExternalStorageDirectory() + "/test/right.png", cropBitmap3);
+
+
 
     }
 

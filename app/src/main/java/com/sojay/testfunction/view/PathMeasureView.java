@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
 import com.sojay.testfunction.R;
@@ -70,16 +71,31 @@ public class PathMeasureView extends FrameLayout {
         pathMeasure.setPath(mPath, false);
     }
 
+    private boolean aa = false;
+
     public void startMove() {
         ValueAnimator animator = ValueAnimator.ofFloat(0, pathMeasure.getLength());
+
         animator.setDuration(5 * 1000);
-        animator.setInterpolator(new DecelerateInterpolator());
+        animator.setInterpolator(new LinearInterpolator());
+
+        int w = mGif.getWidth();
+        int h = mGif.getHeight();
+
         animator.addUpdateListener(animation -> {
             float distance = (float) animation.getAnimatedValue();
             //tan[0]是邻边 tan[1]是对边
             pathMeasure.getPosTan(distance, pos, tan);
-            mGif.layout((int) (pos[0] - mGif.getWidth() / 2), (int) (pos[1] -mGif.getHeight() / 2), (int) (pos[0] + mGif.getWidth() / 2), (int) (pos[1] + mGif.getHeight() / 2));
+            mGif.layout((int) (pos[0] - w / 2), (int) (pos[1] - h / 2), (int) (pos[0] + w / 2), (int) (pos[1] + h / 2));
+            if (!aa) {
+                mGif.setScaleX(1f);
+                mGif.setScaleY(1f);
+                mGif.animate().scaleX(1.5f).scaleY(1.5f).setStartDelay(3000L).setDuration(1000L);
+                aa = true;
+            }
+
         });
+
         animator.start();
     }
 

@@ -35,7 +35,7 @@ public class FanYeActivity extends AppCompatActivity implements MyClockView.Down
         myClockView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         myClockView.setDownCountTimerListener(this);
 
-        int type = 21;
+        int type = 11;
 
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override

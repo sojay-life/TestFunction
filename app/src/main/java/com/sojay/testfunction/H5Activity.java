@@ -3,6 +3,7 @@ package com.sojay.testfunction;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -67,7 +68,16 @@ public class H5Activity extends AppCompatActivity {
 //        String url = "http://lrs.cheerup-edu.cn/wps/index.html";
 //        String url = "https://appnew.cheerup-edu.cn/wx/ppt2.html";
 //        String url = "https://appnew.cheerup-edu.cn/zbdlw/index.html";
-        String url = "https://m.cheerup-edu.cn/kejian/kejian.html?course_id=6&isfx=2";
+        String url = "https://m.cheerup-edu.cn/kejian/kejian.html?course_id=13";
+
+
+        mWebView.addJavascriptInterface(new JavascriptApi() {
+            @Override
+            public void orderStatus(String s) {
+                System.out.println("##########   s = " + s);
+            }
+        }, "course");
+
         mWebView.loadUrl(url);
 
         mPaintView.setCanEdit(false);
@@ -86,7 +96,15 @@ public class H5Activity extends AppCompatActivity {
         });
 
         tv6.setOnClickListener(v -> {
-            path_measure_view.setPath(Constant.path);
+            Path path = new Path();
+            path.lineTo(0, 0);
+            path.lineTo(200, 0);
+            path.lineTo(200, 200);
+            path.lineTo(400, 200);
+            path.lineTo(400, 400);
+            path.lineTo(600, 400);
+//            path_measure_view.setPath(Constant.path);
+            path_measure_view.setPath(path);
             path_measure_view.startMove();
         });
     }

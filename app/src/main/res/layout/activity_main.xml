@@ -106,6 +106,15 @@
                 android:layout_marginTop="20dp"
                 android:text="翻页" />
 
+            <TextView
+                android:id="@+id/tv11"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="#ccc"
+                android:layout_marginTop="20dp"
+                android:text="拼接图" />
+
         </LinearLayout>
 
     </ScrollView>
